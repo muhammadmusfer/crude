@@ -1,0 +1,92 @@
+module.exports = {
+  env: {
+    es6: true,
+    node: true,
+    browser: true,
+    jest: true,
+  },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:prettier/recommended',
+    'plugin:import/recommended',
+    'plugin:jsx-a11y/recommended',
+    'plugin:lodash/recommended',
+  ],
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
+    ecmaVersion: 12,
+    sourceType: 'module',
+  },
+  plugins: [
+    'react',
+    'import',
+    'lodash',
+    'eslint-plugin-no-inline-styles',
+    'jsx-a11y',
+  ],
+  rules: {
+    'require-await': 'error',
+    'arrow-body-style': ['error', 'as-needed'],
+    'prefer-const': 'error',
+    'no-var': 'error',
+    'no-shadow': 'error',
+    'object-shorthand': 'error',
+    'no-nested-ternary': 'error',
+    'no-dupe-else-if': 'error',
+    'array-callback-return': 'error',
+    eqeqeq: 'error',
+    'no-else-return': 'error',
+    'no-return-await': 'error',
+    //'no-console': 'error',
+    'react/jsx-key': 'error',
+    'react/jsx-no-target-blank': 'error',
+    'react/default-props-match-prop-types': 'error',
+    'react/forbid-prop-types': 'error',
+    'react/no-array-index-key': 'error',
+    'react/no-typos': 'error',
+    'react/no-unescaped-entities': 'error',
+    'react/prefer-stateless-function': 'error',
+    'react/prop-types': 'error',
+    'react/require-default-props': 'error',
+    'react/jsx-no-duplicate-props': 'error',
+    'linebreak-style': ['error', 'unix'],
+    'lodash/import-scope': 'off',
+    'lodash/prefer-lodash-method': 'off',
+    'lodash/chaining': ['error', 'implicit'],
+    'lodash/matches-shorthand': 'off',
+    'lodash/matches-prop-shorthand': 'off',
+    'lodash/prop-shorthand': 'off',
+    'lodash/prefer-invoke-map': 'off',
+    'lodash/prefer-constant': 'off',
+    'lodash/prefer-noop': 'off',
+    'no-inline-styles/no-inline-styles': 'error',
+    'no-restricted-imports': [
+      'error',
+      {
+        patterns: ['.*'],
+      },
+    ],
+  },
+  overrides: [
+    {
+      files: ['src/index.js'],
+      rules: {
+        'no-restricted-imports': 'off',
+      },
+    },
+  ],
+  settings: {
+    'import/resolver': {
+      node: {
+        paths: ['src'],
+      },
+    },
+    react: {
+      pragma: 'React',
+      version: 'detect',
+    },
+  },
+}
