@@ -2,21 +2,27 @@ import React, { useState } from 'react'
 import useStyle from 'views/todo/header/HeaderStyle'
 import AddIcon from '@material-ui/icons/Add'
 import TextField from '@material-ui/core/TextField'
-import { useSelector, useDispatch } from 'react-redux'
-import { addPendingList } from 'store/todo/TodoSlice'
+import { useDispatch } from 'react-redux'
+import { addPendingTask } from 'store/todo/TodoSlice'
 import TodoList from 'views/todo/todo-list/TodoList'
 
 function TodoHeader() {
-  const pendinglist = useSelector((state) => state.todo.pendingList)
-
   const dispatch = useDispatch()
   const classes = useStyle()
   const [input, setInput] = useState('')
 
   const inputObj = {
-    text: input,
-    id: Math.random(),
-    isPending: false,
+    todo_data: input,
+    id: Math.floor(Math.random() * 1000),
+    is_done: false,
+  }
+
+  function add() {
+    if (input === '') alert('Please Enter String')
+    else {
+      dispatch(addPendingTask(inputObj))
+      setInput('')
+    }
   }
 
   const handleOnChange = (e) => setInput(e.target.value)
@@ -30,15 +36,11 @@ function TodoHeader() {
           className={classes.inputField}
           placeholder="Enter an activity..."
           onChange={handleOnChange}
+          value={input}
         />
-        <button
-          className={classes.addButton}
-          onClick={() => dispatch(addPendingList(inputObj))}
-        >
+        <button className={classes.addButton} onClick={() => add()}>
           <AddIcon />
         </button>
-
-        {console.log(pendinglist)}
       </div>
       <TodoList />
     </div>

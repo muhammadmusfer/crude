@@ -31,18 +31,17 @@ const useStyle = makeStyles({
     '&.focused': {
       outline: 'none',
     },
+    position: 'relative',
   },
   addButton: {
     cursor: 'pointer',
     background: 'whitesmoke',
     color: 'teal',
-    width: '10%',
-    height: '60px',
     top: '16px',
     marginLeft: '-7%',
     borderRadius: '50%',
     border: 'none',
-    padding: '0.8%',
+    padding: '3%',
     position: 'relative',
   },
 })
